@@ -4,8 +4,16 @@ This is an unofficial Go client library for the Zoom API. I've just started and 
 
 - List Meetings
 - Create Meetings
+- Delete Meeting
+- Get Meeting by Id
+- Get Meeting Invitation
 
-This library is in its infancy and has not been tested for production use.
+This library is in its infancy and has not been tested yet for production use.
+
+Zoom API version supported
+- Version: 2.0.0
+- Host: api.zoom.us/v2
+
 
 ### Set Environment Variables
 
@@ -104,7 +112,55 @@ func deleteMeetingExample() {
 
 }
 ```
+### Get Meeting details by Id example
+```go
+func getMeetingByIdExample() {
+
+	meetingId := 82143969140
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the client to list meetings
+	var err error
+
+	var resp zoomAPI.GetMeetingResponse
+	resp, err = apiClient.GetMeeting(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Reetrieved meeting : id = %d, topic = %s, join url = %s, start url = %s, start time = %s\n", resp.Id,
+		resp.Topic, resp.JoinUrl, resp.StartUrl, resp.StartTime)
+
+}
+```
+
+### Get Meeting Invitation example
+```go
+func getMeetingInvitationExample() {
+
+	meetingId := 82143969140
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the client to list meetings
+	var err error
+
+	var resp zoomAPI.GetMeetingInvitationResponse
+	resp, err = apiClient.GetMeetingInvitation(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Meeting invitation = %s\n", resp.Invitation)
+
+}
+```
+
+### References
+https://marketplace.zoom.us/docs/api-reference/zoom-api
 
 ### Maintained by
-
 Melvin Vivas www.melvinvivas.com

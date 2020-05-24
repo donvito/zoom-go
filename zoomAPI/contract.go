@@ -71,7 +71,7 @@ type Settings struct {
 type CreateMeetingResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	Duration  int       `json:"duration"`
-	HostID    string    `json:"host_id"`
+	HostId    string    `json:"host_id"`
 	Id        int       `json:"id"`
 	JoinUrl   string    `json:"join_url"`
 	Settings  struct {
@@ -103,10 +103,58 @@ type CreateMeetingResponse struct {
 		RegistrantsEmailNotification bool `json:"registrants_email_notification"`
 	} `json:"settings"`
 	StartTime time.Time `json:"start_time"`
-	StartURL  string    `json:"start_url"`
+	StartUrl  string    `json:"start_url"`
 	Status    string    `json:"status"`
 	Timezone  string    `json:"timezone"`
 	Topic     string    `json:"topic"`
 	Type      int       `json:"type"`
 	UUID      string    `json:"uuid"`
+}
+
+type GetMeetingResponse struct {
+	Agenda    string    `json:"agenda"`
+	CreatedAt time.Time `json:"created_at"`
+	Duration  int       `json:"duration"`
+	HostId    string    `json:"host_id"`
+	Id        int       `json:"id"`
+	JoinUrl   string    `json:"join_url"`
+	Settings  struct {
+		AlternativeHosts      string   `json:"alternative_hosts"`
+		ApprovalType          int      `json:"approval_type"`
+		Audio                 string   `json:"audio"`
+		AutoRecording         string   `json:"auto_recording"`
+		CloseRegistration     bool     `json:"close_registration"`
+		CnMeeting             bool     `json:"cn_meeting"`
+		EnforceLogin          bool     `json:"enforce_login"`
+		EnforceLoginDomains   string   `json:"enforce_login_domains"`
+		GlobalDialInCountries []string `json:"global_dial_in_countries"`
+		GlobalDialInNumbers   []struct {
+			City        string `json:"city"`
+			Country     string `json:"country"`
+			CountryName string `json:"country_name"`
+			Number      string `json:"number"`
+			Type        string `json:"type"`
+		} `json:"global_dial_in_numbers"`
+		HostVideo                    bool `json:"host_video"`
+		InMeeting                    bool `json:"in_meeting"`
+		JoinBeforeHost               bool `json:"join_before_host"`
+		MuteUponEntry                bool `json:"mute_upon_entry"`
+		ParticipantVideo             bool `json:"participant_video"`
+		RegistrantsConfirmationEmail bool `json:"registrants_confirmation_email"`
+		UsePmi                       bool `json:"use_pmi"`
+		WaitingRoom                  bool `json:"waiting_room"`
+		Watermark                    bool `json:"watermark"`
+		RegistrantsEmailNotification bool `json:"registrants_email_notification"`
+	} `json:"settings"`
+	StartTime time.Time `json:"start_time"`
+	StartUrl  string    `json:"start_url"`
+	Status    string    `json:"status"`
+	Timezone  string    `json:"timezone"`
+	Topic     string    `json:"topic"`
+	Type      int       `json:"type"`
+	Uuid      string    `json:"uuid"`
+}
+
+type GetMeetingInvitationResponse struct {
+	Invitation string `json:"invitation"`
 }

@@ -12,7 +12,9 @@ func main() {
 
 	//createMeetingExample()
 	//listMeetingExample()
-	deleteMeetingExample()
+	//deleteMeetingExample()
+	//getMeetingByIdExample()
+	getMeetingInvitationExample()
 }
 
 func listMeetingExample() {
@@ -87,5 +89,46 @@ func deleteMeetingExample() {
 	}
 
 	fmt.Printf("Meeting with id %d deleted", meetingId)
+
+}
+
+func getMeetingByIdExample() {
+
+	meetingId := 82143969140
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the client to list meetings
+	var err error
+
+	var resp zoomAPI.GetMeetingResponse
+	resp, err = apiClient.GetMeeting(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Reetrieved meeting : id = %d, topic = %s, join url = %s, start url = %s, start time = %s\n", resp.Id,
+		resp.Topic, resp.JoinUrl, resp.StartUrl, resp.StartTime)
+
+}
+
+func getMeetingInvitationExample() {
+
+	meetingId := 82143969140
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the client to list meetings
+	var err error
+
+	var resp zoomAPI.GetMeetingInvitationResponse
+	resp, err = apiClient.GetMeetingInvitation(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Meeting invitation = %s\n", resp.Invitation)
 
 }
