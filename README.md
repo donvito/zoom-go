@@ -28,6 +28,11 @@ You will need a paid account to access Zoom's REST API.  You need to create a JW
 Then, get a JWT token from the App Credentials of the app you just created.  Check the instructions here 
 https://marketplace.zoom.us/docs/guides/build/jwt-app
 
+### Download the library to your project
+```
+go get "github.com/donvito/zoom-go/zoomAPI"
+```
+
 ### List Meeting example
 ```go
 func listMeetingExample() {
