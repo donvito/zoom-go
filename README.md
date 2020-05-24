@@ -14,6 +14,7 @@ Zoom API version supported
 - Version: 2.0.0
 - Host: api.zoom.us/v2
 
+## Usage
 
 ### Set Environment Variables
 
