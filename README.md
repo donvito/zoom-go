@@ -34,7 +34,9 @@ https://marketplace.zoom.us/docs/guides/build/jwt-app
 go get "github.com/donvito/zoom-go/zoomAPI"
 ```
 
-### List Meeting example
+## Examples
+
+### List Meeting
 ```go
 func listMeetingExample() {
 
@@ -61,7 +63,7 @@ func listMeetingExample() {
 
 ```
 
-### Create Meeting example
+### Create Meeting
 ```go
 func createMeetingExample() {
 
@@ -118,7 +120,7 @@ func deleteMeetingExample() {
 
 }
 ```
-### Get Meeting details by Id example
+### Get Meeting details by Id
 ```go
 func getMeetingByIdExample() {
 
@@ -142,7 +144,7 @@ func getMeetingByIdExample() {
 }
 ```
 
-### Get Meeting Invitation example
+### Get Meeting Invitation
 ```go
 func getMeetingInvitationExample() {
 
