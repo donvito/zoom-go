@@ -11,7 +11,8 @@ import (
 func main() {
 
 	//createMeetingExample()
-	listMeetingExample()
+	//listMeetingExample()
+	deleteMeetingExample()
 }
 
 func listMeetingExample() {
@@ -67,5 +68,24 @@ func createMeetingExample() {
 
 	fmt.Printf("Created meeting : id = %d, topic = %s, join url = %s, start time = %s\n", resp.Id,
 		resp.Topic, resp.JoinUrl, resp.StartTime)
+
+}
+
+func deleteMeetingExample() {
+
+	meetingId := 84363870562
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the client to list meetings
+	var err error
+
+	err = apiClient.DeleteMeeting(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Meeting with id %d deleted", meetingId)
 
 }

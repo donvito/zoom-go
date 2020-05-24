@@ -15,6 +15,11 @@ This library is in its infancy and has not been tested for production use.
     export ZOOM_USER_ID="<your email or username>" 
 ```
 
+### How to get your Zoom JWT token
+You will need a paid account to access Zoom's REST API.  You need to create a JWT App in the App Marketplace. 
+Then, get a JWT token from the App Credentials of the app you just created.  Check the instructions here 
+https://marketplace.zoom.us/docs/guides/build/jwt-app
+
 ### List Meeting example
 ```go
 func listMeetingExample() {
@@ -74,6 +79,28 @@ func createMeetingExample() {
     
     	fmt.Printf("Created meeting : id = %d, topic = %s, join url = %s, start time = %s\n", resp.Id, 
                 resp.Topic, resp.JoinUrl, resp.StartTime)
+
+}
+```
+
+### Delete Meeting example
+```go
+func deleteMeetingExample() {
+
+	meetingId := 84363870562
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the client to list meetings
+	var err error
+
+	err = apiClient.DeleteMeeting(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Meeting with id %d deleted", meetingId)
 
 }
 ```
