@@ -111,7 +111,7 @@ func getMeetingByIdExample() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Reetrieved meeting : id = %d, topic = %s, join url = %s, start url = %s, start time = %s, status = %s\n", resp.Id,
+	fmt.Printf("Retrieved meeting : id = %d, topic = %s, join url = %s, start url = %s, start time = %s, status = %s\n", resp.Id,
 		resp.Topic, resp.JoinUrl, resp.StartUrl, resp.StartTime, resp.Status)
 
 }
