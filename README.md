@@ -7,6 +7,8 @@ This is an unofficial Go client library for the Zoom API. I've just started and 
 - Delete Meeting
 - Get Meeting by Id
 - Get Meeting Invitation
+- Add Meeting Registrant
+- List Meeting Registrants
 
 This library is in its infancy and has not been tested yet for production use.
 

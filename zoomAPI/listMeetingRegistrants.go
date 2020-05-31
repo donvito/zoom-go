@@ -8,7 +8,7 @@ import (
 
 /*
    API Documentation
-   https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetings
+   https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetingregistrants
 */
 func (client Client) ListMeetingRegistrants(meetingId int) (apiResponse ListMeetingRegistrantsResponse, err error) {
 
