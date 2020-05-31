@@ -14,7 +14,9 @@ func main() {
 	//listMeetingExample()
 	//deleteMeetingExample()
 	//getMeetingByIdExample()
-	getMeetingInvitationExample()
+	//getMeetingInvitationExample()
+	//addMeetingRegistrantExample()
+	listMeetingRegistrantsExample()
 }
 
 func listMeetingExample() {
@@ -56,7 +58,7 @@ func createMeetingExample() {
 	resp, err = apiClient.CreateMeeting(userId,
 		"Contributors Meeting for Project",
 		meeting.MeetingTypeScheduled,
-		"2020-05-24T22:00:00Z",
+		"2020-05-31T22:00:00Z",
 		30,
 		"",
 		"Asia/Singapore",
@@ -130,5 +132,65 @@ func getMeetingInvitationExample() {
 	}
 
 	fmt.Printf("Meeting invitation = %s\n", resp.Invitation)
+
+}
+
+func addMeetingRegistrantExample() {
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"),
+		os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the API client to add a meeting registrant
+	var resp zoomAPI.AddMeetingRegistrantResponse
+	var err error
+
+	meetingId := 87853332664
+	resp, err = apiClient.AddMeetingRegistrant(meetingId,
+		"registrant@email.com",
+		"First Name",
+		"Last Name",
+		"Address",
+		"City",
+		"Country",
+		"123456",
+		"State",
+		"123123123",
+		"Industry",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Added meeting registrant : id = %s to meeting id = %d \n", resp.RegistrantId, resp.Id)
+
+}
+
+func listMeetingRegistrantsExample() {
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	meetingId := 87853332664
+
+	//Use the client to list meeting registrants
+	var resp zoomAPI.ListMeetingRegistrantsResponse
+	var err error
+
+	resp, err = apiClient.ListMeetingRegistrants(meetingId)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, registrant := range resp.Registrants {
+		fmt.Printf("registrant id = %s, email = %s, first name = %s, last name = %s\n",
+			registrant.Id, registrant.Email, registrant.FirstName, registrant.LastName)
+	}
 
 }

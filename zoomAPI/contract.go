@@ -158,3 +158,68 @@ type GetMeetingResponse struct {
 type GetMeetingInvitationResponse struct {
 	Invitation string `json:"invitation"`
 }
+
+type CustomQuestion struct {
+	Title string `json:"title"`
+	Value string `json:"value"`
+}
+
+type AddMeetingRegistrantRequest struct {
+	Email                 string           `json:"email"`
+	FirstName             string           `json:"first_name"`
+	LastName              string           `json:"last_name"`
+	Address               string           `json:"address"`
+	City                  string           `json:"city"`
+	Country               string           `json:"country"`
+	Zip                   string           `json:"zip"`
+	State                 string           `json:"state"`
+	Phone                 string           `json:"phone"`
+	Industry              string           `json:"industry"`
+	Org                   string           `json:"org"`
+	JobTitle              string           `json:"job_title"`
+	PurchasingTimeFrame   string           `json:"purchasing_time_frame"`
+	RoleInPurchaseProcess string           `json:"role_in_purchase_process"`
+	NoOfEmployees         string           `json:"no_of_employees"`
+	Comments              string           `json:"comments"`
+	CustomQuestions       []CustomQuestion `json:"custom_questions"`
+}
+
+type AddMeetingRegistrantResponse struct {
+	Id           int    `json:"id"`
+	JoinUrl      string `json:"join_url"`
+	RegistrantId string `json:"registrant_id"`
+	StartTime    string `json:"start_time"`
+	Topic        string `json:"topic"`
+}
+
+type MeetingRegistrant struct {
+	Email                 string           `json:"email"`
+	FirstName             string           `json:"first_name"`
+	LastName              string           `json:"last_name"`
+	Id                    string           `json:"id"`
+	Address               string           `json:"address"`
+	City                  string           `json:"city"`
+	Country               string           `json:"country"`
+	Zip                   string           `json:"zip"`
+	State                 string           `json:"state"`
+	Phone                 string           `json:"phone"`
+	Industry              string           `json:"industry"`
+	Org                   string           `json:"org"`
+	JobTitle              string           `json:"job_title"`
+	PurchasingTimeFrame   string           `json:"purchasing_time_frame"`
+	RoleInPurchaseProcess string           `json:"role_in_purchase_process"`
+	NoOfEmployees         string           `json:"no_of_employees"`
+	Comments              string           `json:"comments"`
+	CustomQuestion        []CustomQuestion `json:"custom_questions"`
+	Status                string           `json:"status"`
+	CreateTime            time.Time        `json:"create_time"`
+	JoinUrl               string           `json:"join_url"`
+}
+
+type ListMeetingRegistrantsResponse struct {
+	PageCount    int                 `json:"page_count"`
+	PageNumber   int                 `json:"page_number"`
+	PageSize     int                 `json:"page_size"`
+	TotalRecords int                 `json:"total_records"`
+	Registrants  []MeetingRegistrant `json:"registrants"`
+}
