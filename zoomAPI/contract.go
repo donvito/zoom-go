@@ -223,3 +223,7 @@ type ListMeetingRegistrantsResponse struct {
 	TotalRecords int                 `json:"total_records"`
 	Registrants  []MeetingRegistrant `json:"registrants"`
 }
+
+type UpdateMeetingStatusRequest struct {
+	Action string `json:"action"`
+}

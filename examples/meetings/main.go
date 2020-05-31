@@ -16,7 +16,8 @@ func main() {
 	//getMeetingByIdExample()
 	//getMeetingInvitationExample()
 	//addMeetingRegistrantExample()
-	listMeetingRegistrantsExample()
+	//listMeetingRegistrantsExample()
+	updateMeetingStatusExample()
 }
 
 func listMeetingExample() {
@@ -96,7 +97,7 @@ func deleteMeetingExample() {
 
 func getMeetingByIdExample() {
 
-	meetingId := 82143969140
+	meetingId := 87853332664
 
 	//Create a new Zoom API client
 	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"), os.Getenv("ZOOM_AUTH_TOKEN"))
@@ -110,8 +111,8 @@ func getMeetingByIdExample() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Reetrieved meeting : id = %d, topic = %s, join url = %s, start url = %s, start time = %s\n", resp.Id,
-		resp.Topic, resp.JoinUrl, resp.StartUrl, resp.StartTime)
+	fmt.Printf("Reetrieved meeting : id = %d, topic = %s, join url = %s, start url = %s, start time = %s, status = %s\n", resp.Id,
+		resp.Topic, resp.JoinUrl, resp.StartUrl, resp.StartTime, resp.Status)
 
 }
 
@@ -192,5 +193,24 @@ func listMeetingRegistrantsExample() {
 		fmt.Printf("registrant id = %s, email = %s, first name = %s, last name = %s\n",
 			registrant.Id, registrant.Email, registrant.FirstName, registrant.LastName)
 	}
+
+}
+
+func updateMeetingStatusExample(){
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"),
+		os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the API client to add a meeting registrant
+	var err error
+
+	meetingId := 87853332664
+	err = apiClient.UpdateMeetingStatus(meetingId, "end")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Meeting status updated")
 
 }

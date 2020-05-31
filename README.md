@@ -9,6 +9,7 @@ This is an unofficial Go client library for the Zoom API. I've just started and 
 - Get Meeting Invitation
 - Add Meeting Registrant
 - List Meeting Registrants
+- Update Meeting Status/End Meeting
 
 This library is in its infancy and has not been tested yet for production use.
 
