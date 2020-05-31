@@ -170,6 +170,28 @@ func getMeetingInvitationExample() {
 }
 ```
 
+### End Meeting using Update Meeting Status
+```go
+func updateMeetingStatusExample(){
+
+	//Create a new Zoom API client
+	apiClient := zoomAPI.NewClient(os.Getenv("ZOOM_API_URL"),
+		os.Getenv("ZOOM_AUTH_TOKEN"))
+
+	//Use the API client to add a meeting registrant
+	var err error
+
+	meetingId := 87853332664
+	err = apiClient.UpdateMeetingStatus(meetingId, "end")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Meeting status updated")
+
+}
+```
+
 ### References
 https://marketplace.zoom.us/docs/api-reference/zoom-api
 
