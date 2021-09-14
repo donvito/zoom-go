@@ -54,6 +54,7 @@ type Settings struct {
 	CnMeeting                    bool     `json:"cn_meeting"`
 	InMeeting                    bool     `json:"in_meeting"`
 	JoinBeforeHost               bool     `json:"join_before_host"`
+	JoinBeforeHostTime           int      `json:"jbh_time"`
 	MuteUponEntry                bool     `json:"mute_upon_entry"`
 	Watermark                    bool     `json:"watermark"`
 	UsePmi                       bool     `json:"use_pmi"`
@@ -64,6 +65,7 @@ type Settings struct {
 	EnforceLogin                 bool     `json:"enforce_login"`
 	EnforceLoginDomains          string   `json:"enforce_login_domains"`
 	AlternativeHosts             string   `json:"alternative_hosts"`
+	WaitingRoom                  bool     `json:"waiting_room"`
 	GlobalDialInCountries        []string `json:"global_dial_in_countries"`
 	RegistrantsEmailNotification bool     `json:"registrants_email_notification"`
 }
